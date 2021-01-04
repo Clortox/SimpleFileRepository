@@ -1,0 +1,14 @@
+############
+# Git Ignore
+
+#Linux trash folder which can appear anywhere
+.Trash-*
+
+# .nfs files are created when file is removed but still being accessed
+.nfs*
+
+#dont add anyof the symlinks in dir to tracking
+dir/*
+
+#but still keep the folder
+!dir/.gitkeep
