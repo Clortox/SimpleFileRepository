@@ -5,7 +5,7 @@
 ?>
 
 <header>
-    <div class="jumbotron">
+    <div class="jumbotron bg-dark border-bottom border-secondary text-white">
     <h1><?php echo $site_name ?></h1>
     <?php
         if($isConvo){
@@ -14,7 +14,7 @@
         }
     ?>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark border border-secondary">
             <?php
                 foreach($nav_names as $index=>$name){
                     echo '<a class="navbar-brand" href="' . $nav_links[$index] . '">'

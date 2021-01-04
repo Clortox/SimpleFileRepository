@@ -20,7 +20,7 @@
     <title><?php echo $site_name ?></title>
 
 </head>
-<body class="bg-dark">
+<body style="background-color: black" class="">
     <?php
         include 'www/header.php';
     ?>
@@ -68,13 +68,13 @@
         }
 
     ?>
-    <div class="card ml-4 mr-4">
+    <div class="card bg-dark text-white ml-4 mr-4">
         <div class="card-header">
             <h2><?php echo $dir ?></h2>
         </div>
         <div class="card-body">
             <p>Select a file to download, or a folder to view its contents</p>
-            <table id="catTable" class="display table">
+            <table id="catTable" class="display table text-white">
                 <thead>
                     <tr>
                         <th>File Name</th>
@@ -113,7 +113,6 @@
             </table>
         </div>
     </div>
-
 </body>
 
 </html>
