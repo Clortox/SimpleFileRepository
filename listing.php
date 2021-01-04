@@ -84,7 +84,6 @@
                 <tbody>
             <?php
                 foreach($elements as $i=>$currentfile){
-
                     echo "<tr>";
                     echo "<td>" . $currentfile . "</td>"; 
                     $fulldir = $dir_dirs[$dir_index] . $path . "/" . $currentfile;

@@ -4,12 +4,12 @@
     error_reporting(E_ALL);
 
     function foldersize($path){
-        $sizestr = shell_exec('du -sh ' . "$path" . '/ | awk \'{print $1} \'');
+        $sizestr = shell_exec('du -sh "' . $path . '/" | awk \'{print $1} \'');
         return $sizestr;
     }
 
     function listingsize($path){
-        $sizestr = shell_exec('du -h ' . "$path" . ' | awk \'{print $1}\'');
+        $sizestr = shell_exec('du -h "' . $path . '" | awk \'{print $1}\'');
         return $sizestr;
     }
 ?>
