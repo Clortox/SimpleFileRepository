@@ -49,6 +49,7 @@
             $path = $_GET['path'];
         }
 
+        $elements = [];
         if($handle = opendir($dir_dirs[$dir_index] . $path)){
             while(false !== ($entry = readdir($handle))){
                 //exclude . and ..
@@ -83,13 +84,22 @@
                 </thead>
                 <tbody>
             <?php
+                if(count($elements) == 0){
+                    echo <<< emptylisting
+                        <tr>
+                            <td>Oops! This folder is empty...</td>
+                            <td></td>
+                            <td>0</td>
+                        </tr>
+                    emptylisting;
+                }
                 foreach($elements as $i=>$currentfile){
                     echo "<tr>";
                     echo "<td>" . $currentfile . "</td>"; 
                     $fulldir = $dir_dirs[$dir_index] . $path . "/" . $currentfile;
                     if(is_dir($fulldir)){
                         echo "<td><a href=\"listing.php?folder="
-                            . $dir . "&path=%2F" . $currentfile 
+                            . $dir . "&path=" . $path . "/" . $currentfile 
                             . "\">View Directory</a></td>"; 
                         echo "<td>" . foldersize($fulldir) . "</td>";
                     } else {
