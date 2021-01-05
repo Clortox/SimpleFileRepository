@@ -63,6 +63,38 @@
             </table>
         </div>
     </div>
+    <?php
+        if($isTree){
+            echo <<< cardHead
+            <div class="card bg-dark text-white ml-4 mr-4">
+            <div class="card-header">
+            cardHead;
+            echo '<h2>' . $treeName . '</h2>';
+            echo <<< tableandcard
+            </div>
+            <div class="card-body">
+            <table id="treeTable" class="display table text-white">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Url</th>
+                    </tr>
+                </thead>
+                <tbody>
+            tableandcard;
+            foreach($tree_names as $i=>$currentLink){
+                echo '<tr>';
+                echo '<td><a href="' . $tree_links[$i] . '">' 
+                    . $currentLink . '</a></td>';
+                echo '<td>' . $tree_links[$i] . '</td>';
+                echo '</tr>';
+            }
+            echo '</tbody>';
+            echo '</table>';
+            echo '</div>';
+            echo '</div>';
+        }
+    ?>
 </body>
 
 </html>

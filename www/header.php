@@ -1,7 +1,6 @@
 <?php
     $clientip = $_SERVER['REMOTE_ADDR'];
     $serverip = $_SERVER['SERVER_ADDR'];
-
 ?>
 
 <header>
@@ -16,14 +15,15 @@
         if($isNav){
             echo '<nav class="navbar navbar-expand-lg 
                 navbar-dark border border-secondary">';
-                    foreach($nav_names as $index=>$name){
-                        echo '<a class="navbar-brand" href="' . $nav_links[$index] . '">'
-                            . $name . '</a>';
-                    }
+            echo '<ul class="nav navbar-nav">';
+            foreach($nav_names as $index=>$name){
+                echo '<li class="navbar-brand"><a href="' 
+                    . $nav_links[$index] . '">'
+                    . $name . '</a></li>';
+            }
+            echo '</ul>';
             echo '</nav>';
         }
     ?>
-
-
     </div>
 </header>

@@ -14,10 +14,6 @@
      * These can start with "#" to direct to a tag on the page, could be an internal
      * link by using "/listing.php?folder=SomeFolder", or could be an external site
      *
-     * $nav_rname and $nav_rlink are for a link on the right side of the nav bar.
-     * This link is by default an ad for this repo, however you can disable it by
-     * setting $isrNav to false, or change it to advertise anything you choose!
-     *
      * The navbar can be disabled by changing isNav to false
      *
      * These associate in order ie the Tag $nav_names[3] will direct the user to
@@ -26,7 +22,6 @@
      */
 
     $isNav = true;
-    $isrNav = true;
 
     $nav_names = array(
         'Home',
@@ -37,10 +32,6 @@
         'index.php',
         'https://github.com/Clortox',
     );
-
-    //$nav_rname = 'Git this site!';
-    //$nav_rlink = 'https://github.com/Clortox/SimpleFileRepository';
-
 
     /* Directory Variables
      * 
@@ -72,6 +63,39 @@
         'dir/linux',
         'dir/iso',
         'dir/books',
+    );
+
+    /* Link Tree
+     *
+     * My use case for this program is to be a NAS/Portal Page for my network, 
+     * and due to the ammount or raspberry pis and other devices running web
+     * interfaces, I figured a link tree would be very useful
+     *
+     * You can disable this if you so choose, however for those who tend
+     * to run their own personal servers I find this to be very useful
+     *
+     * Each varaible in $tree_names will be a listing under the OtherSites header
+     * Each varaible in $tree_links will be a link that can be chosen
+     * $treeName will be the header all of the linktree card on the main page
+     *
+     * The entire tree can be disables by setting $isTree to false
+     *
+     * These associate in order ie the entry $tree_names[3] will have the link
+     * $tree_links[3] 
+     */
+
+    $isTree = true;
+
+    $treeName = "Local Network";
+
+    $tree_names = array(
+        'Ender 3',
+        'CNC',
+    );
+
+    $tree_links = array(
+        'http://192.168.1.111',
+        'http://192.168.1.100:8000',
     );
 
     /* Convo
