@@ -14,10 +14,19 @@
      * These can start with "#" to direct to a tag on the page, could be an internal
      * link by using "/listing.php?folder=SomeFolder", or could be an external site
      *
+     * $nav_rname and $nav_rlink are for a link on the right side of the nav bar.
+     * This link is by default an ad for this repo, however you can disable it by
+     * setting $isrNav to false, or change it to advertise anything you choose!
+     *
+     * The navbar can be disabled by changing isNav to false
+     *
      * These associate in order ie the Tag $nav_names[3] will direct the user to
      * the link in $nav_links[3]
      *
      */
+
+    $isNav = true;
+    $isrNav = true;
 
     $nav_names = array(
         'Home',
@@ -28,6 +37,10 @@
         'index.php',
         'https://github.com/Clortox',
     );
+
+    //$nav_rname = 'Git this site!';
+    //$nav_rlink = 'https://github.com/Clortox/SimpleFileRepository';
+
 
     /* Directory Variables
      * 
@@ -42,6 +55,8 @@
      * These assiocate in order ie the folder $dir_dirs[3] will have 
      * the title $dir_names[3]
      */
+
+    $isDir = true;
 
     $dir_names = array(
         'Printable Guns',
@@ -85,4 +100,20 @@
         ' is asking for help with their homework from ',
     );
 
+    //Be safe, check arrays
+    if(empty($nav_names) or empty($nav_links)){
+        $isNav = false;
+    } else if(count($nav_names) !== count($nav_links)){
+        $isNav = false;
+    }
+
+    if(empty($dir_names) or empty($dir_dirs)){
+        $isDir = false;
+    } else if (count($dir_names) !== count($dir_dirs)){
+        $isDir = false;
+    }
+
+    if(empty($convo)){
+        $isConvo = false;
+    }
 ?>

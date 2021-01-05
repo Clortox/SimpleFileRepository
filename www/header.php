@@ -12,16 +12,17 @@
             $saying = $convo[rand(0,count($convo)-1)];
             echo '<p>' . $clientip . $saying . $serverip . '</p>';
         }
+        
+        if($isNav){
+            echo '<nav class="navbar navbar-expand-lg 
+                navbar-dark border border-secondary">';
+                    foreach($nav_names as $index=>$name){
+                        echo '<a class="navbar-brand" href="' . $nav_links[$index] . '">'
+                            . $name . '</a>';
+                    }
+            echo '</nav>';
+        }
     ?>
-
-        <nav class="navbar navbar-expand-lg navbar-dark border border-secondary">
-            <?php
-                foreach($nav_names as $index=>$name){
-                    echo '<a class="navbar-brand" href="' . $nav_links[$index] . '">'
-                        . $name . '</a>';
-                }
-            ?>
-        </nav>
 
 
     </div>

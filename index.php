@@ -30,7 +30,17 @@
             <h2>Folders</h2>
         </div>
         <div class="card-body">
-            <p>Select a catagory to start browsing</p>
+            <?php
+                if(!$isDir){
+                    echo <<< errorblock
+                        <h2><b>THERE ARE NO TRACKED DIRECTORIES, 
+                            OR THERE IS AN ERROR IN YOU CONFIGURATION. 
+                            PLEASE CHECK 'var/config'</b></h2>
+                    errorblock;
+                    exit();
+                }
+            ?>
+            <p>Select a category to start browsing</p>
             <table id="catTable" class="display table text-white">
                 <thead>
                     <tr>
