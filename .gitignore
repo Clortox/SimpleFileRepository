@@ -16,6 +16,11 @@ dir/*
 #dont track config.php
 var/config.php
 
+#dont track any of the user added resouce files, except the readme and sample
+resources/*
+!resources/README.txt
+!resources/cabinet.png
+
 #I use vim, therefore ignore temp files and swap files
 *~
 *.swp
