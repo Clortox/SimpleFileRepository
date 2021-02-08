@@ -4,6 +4,9 @@
     //This is what will appear in the tab, as well as on the header
     $site_name = 'Tyler\'s File Repository';
 
+    //This will be the image displayed in the tab of the browser
+    $site_image = "resources/cabinet.png";
+
     /* Navbar
      *
      * Each variable in $nav_names is what will appear on the top bar

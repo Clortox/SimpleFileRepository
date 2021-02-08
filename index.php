@@ -19,6 +19,7 @@
         include 'helpers/files.php';
     ?>
     <title><?php echo $site_name ?></title>
+    <link rel="icon" href="<?php echo $site_image ?>">
 
 </head>
 <body style="background-color: black">
