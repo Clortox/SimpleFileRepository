@@ -13,6 +13,9 @@ dir/*
 #but still keep the folder
 !dir/.gitkeep
 
+#dont track config.php
+var/config.php
+
 #I use vim, therefore ignore temp files and swap files
 *~
 *.swp
