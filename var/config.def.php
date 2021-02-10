@@ -40,7 +40,7 @@
      * 
      * Each variable in $dir_dirs will be a listing
      * on the main page under "folders"
-     * I recomend making a folder of symlinks to where the downloadable files are
+     * I recommend making a folder of symlinks to where the downloadable files are
      *
      * Each variable in $dir_names will be the title of the listing
      * These will appear on the left hand side and will be the name of the 
@@ -67,6 +67,46 @@
         'dir/iso',
         'dir/books',
     );
+
+    /* Hidden Directory Variables
+     *
+     * WARNING: I can't promise this is 100% secure against something like a brute
+     * force attack. PLEASE use secure passwords that are a decent length. The 
+     * brute force speed is only limited by your keyspace, and there is no upper
+     * limit for the size of key that can be used.
+     *
+     * All Dirs here will not be available, and will require the user to know
+     * both the name of the folder, as well as the password. This does not use
+     * any databases
+     * 
+     * Each variable in $hid_dir_names will be a folder that will be hidden
+     * This will need to be known in order to access the folder
+     *
+     * Each variable in $hid_dir_dirs is the location of the files for the 
+     * corresponding $hid_dir_names entry. I recommend making sym links to the 
+     * directories
+     *
+     * Each variable in $hid_dir_psk is the password for the corresponding 
+     * $hid_dir_names entry. This will need to be know in order to access the folder
+     *
+     */
+
+    $isHidden = false;
+    $useJavascript = false;
+
+    $hid_dir_names = array(
+        'Root Directory',
+    );
+
+    $hid_dir_dirs = array(
+        'dir/system_root',
+    );
+
+    $hid_dir_psk = array(
+        '$ecr3t',
+    );
+
+    
 
     /* Link Tree
      *
