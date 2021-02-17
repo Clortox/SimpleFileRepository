@@ -2,21 +2,18 @@
 <head>
     <?php
         session_start();
+        
+	//css, js, and other includes
+	include 'www/include.php';
+        include 'helpers/files.php';
+
 	//if this is a session inside the local connection
-	if(strpos($_SERVER['REMOTE_ADDR'],"192.168.1.")){
+	if($isDebug){
 	    ini_set('display_errors',1);
 	    ini_set('display_startup_errors',1);
 	    error_reporting(E_ALL);
         }
 
-	ini_set('display_errors',1);
-	ini_set('display_startup_errors',1);
-        error_reporting(E_ALL);
-
-
-	//css, js, and other includes
-	include 'www/include.php';
-        include 'helpers/files.php';
     ?>
     <title><?php echo $site_name ?></title>
     <link rel="icon" href="<?php echo $site_image ?>">
@@ -67,6 +64,7 @@
     <?php
         if($isTree){
             echo <<< cardHead
+            <br />
             <div class="card bg-dark text-white ml-4 mr-4">
             <div class="card-header">
             cardHead;
@@ -96,6 +94,36 @@
             echo '</div>';
         }
     ?>
+    <?php
+        if($isHidden){
+            echo <<< cardtop
+            <br />
+            <div class="card bg-dark text-white ml-4 mr-4">
+            <div class="card-header">
+                <h2>Access Hidden Directories</h2>
+            </div>
+            <div class="card-body">
+            cardtop;
+
+            if($useJavascript){
+                echo '<p>The server admin has enabled javascript. Type the name and key and hit enter!</p>';
+
+            } else {
+                echo '<p>The server admin has disabled javascript. Please type the link in the URL and replace &lt;name&gt; with the directory name, and &lt;password&gt; with the password</p>';
+                echo '<p>The link to copy is:</p>';
+                echo $_SERVER['HTTP_HOST'];
+
+
+            }
+
+            echo <<< cardbottom
+            </div>
+            </div>
+            cardbottom;
+        }
+    ?>
+    <br />
+
 </body>
 
 </html>

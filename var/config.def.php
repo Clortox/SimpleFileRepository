@@ -78,6 +78,11 @@
      * All Dirs here will not be available, and will require the user to know
      * both the name of the folder, as well as the password. This does not use
      * any databases
+     *
+     * If you would like to enable the use of javascript for dynamic links, change
+     * $useJavascript to yes, else keep it disabled. If you keep it disabled,
+     * users will have to type the url themselves. This keeps the application light,
+     * but removes some useability. 
      * 
      * Each variable in $hid_dir_names will be a folder that will be hidden
      * This will need to be known in order to access the folder
@@ -166,6 +171,16 @@
         ' is baking cookies with ',
         ' is asking for help with their homework from ',
     );
+
+    /* Debug
+     *
+     * This is not recomneded for production enviroments. This will display
+     * information that could be useful to an attacker. Only use this
+     * if you are developing anything!
+     *
+     */
+
+    $isDebug = false;
 
     //Be safe, check arrays
     if(empty($nav_names) or empty($nav_links)){
