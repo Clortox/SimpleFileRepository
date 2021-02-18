@@ -7,7 +7,7 @@
 	include 'www/include.php';
         include 'helpers/files.php';
 
-	//if this is a session inside the local connection
+        //if debug is enabled
 	if($isDebug){
 	    ini_set('display_errors',1);
 	    ini_set('display_startup_errors',1);
