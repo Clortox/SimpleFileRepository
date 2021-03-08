@@ -18,6 +18,20 @@
     <title><?php echo $site_name ?></title>
     <link rel="icon" href="<?php echo $site_image ?>">
 
+    <script type="text/javascript">
+        <!-- add onclick function -->
+        function makeLink(){
+            var host = "<?php echo $_SERVER['HTTP_HOST'] ?>";
+
+            var folder = document.getElementById("folderName").value;
+            var password = document.getElementById("password").value;
+
+            var link = "/hiddenlisting.php?folder=" + folder +"&psk=" + password;
+            open(link);
+        };
+
+    </script>
+
 </head>
 <body style="background-color: black">
     <?php
@@ -106,13 +120,20 @@
             cardtop;
 
             if($useJavascript){
-                echo '<p>The server admin has enabled javascript. Type the name and key and hit enter!</p>';
+                echo <<< javascriptbox
+                <p>The server admin has enabled javascript. Type the name and password and click Goto Folder!</p>
+                <div class="form-group">
+                    <span>Folder Name:&nbsp;</span><input type="text" id="folderName">
+                    <span>Password   :&nbsp;</span><input type="text" id="password">
+                    <button onclick="makeLink();">Goto Folder</button>
+                </div>
+                
+                javascriptbox;
 
             } else {
-                echo '<p>The server admin has disabled javascript. Please type the link in the URL and replace &lt;name&gt; with the directory name, and &lt;password&gt; with the password</p>';
+                echo '<p>The server admin has disabled javascript, therefore this is not dynamic. Please type the link in the URL and replace &lt;name&gt; with the directory name, and &lt;password&gt; with the password</p>';
                 echo '<p>The link to copy is:</p>';
-                echo $_SERVER['HTTP_HOST'];
-
+                echo $_SERVER['HTTP_HOST'] . "/hiddenlisting.php?folder=&lt;name&gt;&psk=&lt;password&gt;";
 
             }
 
