@@ -2,21 +2,21 @@
 <head>
     <?php
         session_start();
-        
+
         //css, js, and other includes
         include 'www/include.php';
         include 'helpers/files.php';
 
         //if debug is enabled
         if($isDebug){
-            ini_set('display_errors',1);
-            ini_set('display_startup_errors',1);
-            error_reporting(E_ALL);    
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
         }
 
     ?>
     <title><?php echo $site_name ?></title>
-    <link rel="icon" href="<?php echo $site_image ?>">
+    <link rel="icon" href"<?php echo $site_image ?>">
 
 </head>
 <body style="background-color: black" class="">
@@ -26,17 +26,23 @@
     <?php
         $dir = $_GET['folder'];
         $exists = false;
-        foreach($dir_names as $dir_index=>$dir_){
+        foreach($hid_dir_names as $hid_dir_index=>$dir_){
             if($dir_ == $dir){
                 $exists = true;
                 break;
             }
         }
 
-        if(!$exists){
+        $psk = $_GET['psk'];
+        $psk_correct = false;
+        if($hid_dir_psk[$hid_dir_index] == $psk){
+            $psk_correct = true;
+        }
+
+        if(!$exists || !$psk_correct){
             echo <<< errorblock
                 <div class="card-header">
-                    <h2><b>LISTING NOT FOUND</b></h2>
+                    <h2><b>INCORRECT FOLDER OR PASSKEY, PLEASE CONTACT THE SYSTEM ADMINISTRATOR</b></h2>
                 </div>
             errorblock;
             exit();
@@ -49,7 +55,7 @@
         }
 
         $elements = [];
-        if($handle = opendir($dir_dirs[$dir_index] . $path)){
+        if($handle = opendir($hid_dir_dirs[$hid_dir_index] . $path)){
             while(false !== ($entry = readdir($handle))){
                 //exclude . and ..
                 if($entry != '.' && $entry != '..'){
@@ -94,18 +100,19 @@
                 }
                 foreach($elements as $i=>$currentfile){
                     echo "<tr>";
-                    echo "<td>" . $currentfile . "</td>"; 
-                    $fulldir = $dir_dirs[$dir_index] . $path . "/" . $currentfile;
+                    echo "<td>" . $currentfile . "</td>";
+                    $fulldir = $hid_dir_dirs[$hid_dir_index] . $path . "/" . $currentfile;
                     if(is_dir($fulldir)){
-                        echo "<td><a href=\"listing.php?folder="
-                            . $dir . "&path=" . $path . "/" . $currentfile 
-                            . "\">View Directory</a></td>"; 
+                        echo "<td><a href=\"hiddenlisting.php?folder=" . $dir
+                            . "&psk=" . $psk
+                            . "&path=" . $path . "/" . $currentfile
+                            . "\">View Directory</a></td>";
                         echo "<td>" . foldersize($fulldir) . "</td>";
                     } else {
                         echo "<td><a href=\"" . $fulldir . "\">Download</a></td>";
                         echo "<td>" . listingsize($fulldir) . "</td>";
                     }
-                    echo "</tr>";
+                    echo "<tr>";
                 }
             ?>
                 </tbody>
