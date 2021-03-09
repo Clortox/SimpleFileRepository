@@ -8,6 +8,9 @@ INSTALL_PATH = /var/www/html/
 update_config : var/config.php
 	cp var/config.php $(INSTALL_PATH)/var/config.php
 
+update_dir :
+	cp -r dir $(INSTALL_PATH)
+
 install: var/config.php
 	@echo "Installing to $(INSTALL_PATH)"
 	@echo "Everything there will be deleted"

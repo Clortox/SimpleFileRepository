@@ -29,8 +29,13 @@ After you are done setting up your configuration file, run:
 make install
 ```
 
-This will install the website and should now be accessible. If at any time you wish to update the config file, edit the config file in this folder, then run
+This will install the website and should now be accessible. If at any time you wish to update the config file, edit the config file in this folder, then run:
 
 ```bash
 make update_config
+```
+
+If you would like to update the dir folder with new symlinks that you have added, you can do so automatically by running:
+```bash
+make update_dir
 ```
